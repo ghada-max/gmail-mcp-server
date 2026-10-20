@@ -1,5 +1,5 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
-
+from typing import Optional
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_prefix="GMAIL_MCP_",
@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     
     google_client_id: str
     google_client_secret: str
-    google_refresh_token: str
-
+    gemini_api_key: str
+    google_refresh_token: Optional[str] = None  # <--- Make it optional here!
 def get_settings() -> Settings:
     return Settings()
